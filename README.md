@@ -50,3 +50,59 @@ signed radio mesh tells them. There is no command node. The operator sets the ru
 
 How the pieces fit: [`ARCHITECTURE.md`](ARCHITECTURE.md).
 
+## Measured results
+
+Simulation only. *n* is the number of distinct raids: each seed changes routes, timing, speeds and
+bearings. Runs are deterministic, so ± is the standard error between raids, and arms are compared
+raid by raid.
+
+Against a one-interceptor-per-target defence with the same sensors and identification (48 attacking
+quadcopters from 8 directions, n = 8, 420 s):
+
+| | One per target | Our swarm |
+| --- | --- | --- |
+| Leaked per raid | 13.6 | 0.2 |
+| Stopped, of 48 | 32.8 ± 1.6 | 47.2 ± 0.4 (better on all 8 raids) |
+| Sensing to kill, median | | 15.8 ± 3.6 s sooner |
+| Rounds per kill | 1.00 | 1.00 |
+
+The gain does not come from firing more rounds.
+
+| Measure | Result | n |
+| --- | --- | --- |
+| Time from release to identification, per track (overwatch ring) | 28.4 ± 2.1 s sooner from the edge; 47.7 ± 4.5 s sooner for a truck raid | 8 |
+| Collateral index per net kill (mixed 48-drone raid) | 17.7 % ± 5.6 lower | 8 |
+| Noisy sensors (range, angle, frame rate), 48 quadcopters | 38.9 ± 1.9 → 47.0 ± 0.2 stopped with fusion over the mesh | 8 |
+| Most critical drone shot down at 120 s | 37.1 ± 0.4 against 37.0 ± 0.5 with no loss: no measurable cost | 8 |
+| Another round sent after a failed one | 36 of 37 failures | 8 |
+| Peacetime launches without human approval | 0 of 639 | 8 per raid size |
+| Pad launches at friendlies | 0 of 2,424 decisions | 24 |
+
+These are simulator numbers, not field results.
+
+## Team
+
+Team Garudians:
+
+- **Tommy Quak** (team lead): the simulator, the swarm's onboard decision logic, the test and
+  measurement setup, and the demo.
+- **Franky Low**: container packaging for the judges' build, and scoring of the identification ramp.
+- **Jovan Ong**: the second-sensor plan, the results re-baseline, and the display's role legend.
+- **Kalent Chia**: the mentor feedback and rules-of-engagement write-ups, and a raid start-up fix.
+- **Reagan Chow**: the pitch deck, the claims review, and the engagement policy probe.
+
+## Status and future plans
+
+**Status.** This is the code as we submitted it at the hackathon (September 2026). We are now
+rewriting the simulator's decision logic in Rust, so it can later run on a drone's own onboard
+computer.
+
+**Future plans.**
+
+- Finish the Rust rewrite, checking at each step that it gives the same results as the original.
+- Try the decision logic on real hardware, where each interceptor decides on board, with no ground
+  station in the loop.
+- Keep removing places where the simulated drones still rely on information a real drone would not
+  have.
+
+Code will be added here once the rewrite settles.
