@@ -1,8 +1,8 @@
 # Garudians: a counter-drone swarm that decides for itself
 
 Curated showcase of our Singapore Defence Tech Hackathon 2026 project (2nd place, Lord of the Rings
-track). The original team repo is private. This repo holds the write-up, the architecture, demo clips
-and measured results from the version we submitted.
+track), built in collaboration with Wedgetail Dynamics. The original team repo is private. This repo
+holds the write-up, the architecture, demo clips and measured results from the version we submitted.
 
 ![Overwatch scouts on station over Toa Payoh](media/overwatch.gif)
 
@@ -36,6 +36,11 @@ signed radio mesh tells them. There is no command node. The operator sets the ru
   and by night. Each net interceptor picks a kill point within 3 s of its earliest possible intercept
   so the captured drone is predicted to fall on open ground. It still kills early; the map decides
   where, not whether.
+- **Heavy interceptor for Shahed-class threats.** Shahed-class threats go to Wedgetail Dynamics'
+  DEHED heavy interceptor. It is released automatically only when the swarm's own sensors class the
+  contact as Shahed-class, it is identified hostile, and a second, independent drone confirms it with
+  its own signed report. Its stock is a briefed loadout sized from the declared threat, never from the
+  raid itself. The operator's manual release is a labelled override.
 - **Decisions only from what drones sense.** A scanner finds every place the code reads the
   simulator's true state, and a test fails if a decision read is added.
 - **Human in the loop by tier.** In peacetime a human approves every launch. In wartime the swarm
@@ -71,6 +76,7 @@ The gain does not come from firing more rounds.
 | Measure | Result | n |
 | --- | --- | --- |
 | Time from release to identification, per track (overwatch ring) | 28.4 ± 2.1 s sooner from the edge; 47.7 ± 4.5 s sooner for a truck raid | 8 |
+| Shaheds stopped, 48-Shahed raid (DEHED release and stock rules) | 20.9 ± 1.3 → 40.5 ± 0.9 of 48, 0 false releases | 8 |
 | Collateral index per net kill (mixed 48-drone raid) | 17.7 % ± 5.6 lower | 8 |
 | Noisy sensors (range, angle, frame rate), 48 quadcopters | 38.9 ± 1.9 → 47.0 ± 0.2 stopped with fusion over the mesh | 8 |
 | Most critical drone shot down at 120 s | 37.1 ± 0.4 against 37.0 ± 0.5 with no loss: no measurable cost | 8 |
