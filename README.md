@@ -42,5 +42,11 @@ signed radio mesh tells them. There is no command node. The operator sets the ru
   decides, with a deterministic decision-support tool weighing the expected loss of intercepting now
   against not intercepting.
 
+| Estimated people below, day and night | Choosing a lower-collateral kill point |
+| --- | --- |
+| ![Collateral map](media/collateral.gif) | ![Intercept choice](media/intercept.gif) |
 
+![A drone is shot down and the mesh heals](media/mesh-heals.gif)
+
+How the pieces fit: [`ARCHITECTURE.md`](ARCHITECTURE.md).
 
