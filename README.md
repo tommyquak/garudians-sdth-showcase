@@ -93,9 +93,14 @@ Team Garudians:
 
 ## Status and future plans
 
-**Status.** This is the code as we submitted it at the hackathon (September 2026). We are now
-rewriting the simulator's decision logic in Rust, so it can later run on a drone's own onboard
-computer.
+**Status.** The clips and results here are from the version we submitted at the hackathon
+(September 2026).
+
+**Current work.**
+
+- Rewriting the swarm's decision logic in Rust, so it can run on a drone's own onboard computer.
+- Building a hardware command and control (C2) module, so interceptors on real airframes can
+  coordinate among themselves with no ground station in the loop.
 
 **Future plans.**
 
